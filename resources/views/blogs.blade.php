@@ -1,10 +1,6 @@
-@extends('layout')
 
-@section('title')
-    <title>All of blogs</title>
-@endsection
-@section('content')
-   @foreach($blogs as $blog)
+<x-layout>
+ @foreach($blogs as $blog)
    <div>
    <h1><a href="blogs/{{$blog->slug}}">{{$blog->title}}</a></h1>
    <p>published date:{{$blog->date}}</p>
@@ -13,4 +9,5 @@
    </div>
    </div>
    @endforeach
-@endsection
+</x-layout>
+  
