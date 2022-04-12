@@ -8,7 +8,7 @@
 </head>
 <body>
     {{$title}}
-    <x-nav />
+    <x-nav /> <!-- same to <x-nav></x-nav> -->
     {{$slot}}
 </body>
 </html>
