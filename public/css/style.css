@@ -1,0 +1,25 @@
+body {
+    max-width: 980px;
+    margin: 0 auto;
+}
+h1 a,
+h1 {
+    font-size: 32px;
+    text-transform: uppercase;
+    color: #333;
+}
+p {
+    font-size: 24px;
+    color: #333;
+}
+a {
+    font-size: 24px;
+    color: red;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.bg-yellow {
+    background: yellow;
+}
