@@ -24,9 +24,9 @@ Route::get('/', function () {
         "blogs" => $blogs
     ]);
 });
-Route::get('/blogs/{blog}', function ($id) {
-    $blog=Blog::findOrFail($id);
-     return view('blog',[
+Route::get('/blogs/{blog}', function (Blog $blog) { // $blog=Blog::findOrFail($id);
+    //route model binding 
+    return view('blog',[
          "blog" => $blog
      ]
     );
