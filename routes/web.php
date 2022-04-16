@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,12 @@ use App\Models\Category;
 // });
 
 Route::get('/', function () {
-    $blogs=Blog::all();
+    // $blogs=Blog::all();
+    // DB::listen(function($query){
+    //     logger($query->sql);//logger is same to log::info('affff');
+    // });
     return view('blogs',[
-        "blogs" => $blogs
+        "blogs" => Blog::with('category')->get()//with() is called lazay loading or eager loader
     ]);
 });
 Route::get('/blogs/{blog:slug}', function (Blog $blog) { // $blog=Blog::findOrFail($id);
