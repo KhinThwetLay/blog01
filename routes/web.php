@@ -44,7 +44,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     ]);
 });
 
-Route::get('/users/{user}', function (User $user) {
+Route::get('/users/{user:username}', function (User $user) {
    
     return view('blogs',[
         "blogs" => $user->blogs
