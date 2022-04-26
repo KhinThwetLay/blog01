@@ -24,8 +24,12 @@ Route::get('/', function () {
     // DB::listen(function($query){
     //     logger($query->sql);//logger is same to log::info('affff');
     // });
+    $blogs=Blog::latest();
+    if(request('search')){
+        $blogs=$blogs->where('title','LIKE','%'.request('search').'%');
+    }
     return view('blogs',[
-        "blogs" =>Blog::latest()->get(),
+        "blogs" =>$blogs->get(),
         "categories" =>Category::all()// Blog::with('category','author')->get()//with() is called lazay loading or eager loader
     ]);
 });

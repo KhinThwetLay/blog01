@@ -19,6 +19,8 @@
       <form action="" class="my-3">
         <div class="input-group mb-3">
           <input
+            name="search"
+            value="{{request('search')}}"
             type="text"
             autocomplete="false"
             class="form-control"
