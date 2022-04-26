@@ -43,7 +43,5 @@
             @empty
             <p>Blogs Not Found</p>
         @endforelse
-
-
       </div>
     </section>
