@@ -14,9 +14,21 @@ class Blog extends Model
 
     public function scopeFilter($query,$filter)//Blog::latest()->get()
     {
-        $query->when($filter['search'], function($query,$search){
-       $query->where('title','LIKE','%'.request('search').'%')
+        $query->when($filter['search']??false, function($query,$search){
+       $query->where(function($query) use ($search){
+           $query->where('title','LIKE','%'.request('search').'%')
        ->orWhere('body','LIKE','%'.request('search').'%');
+       });
+    });
+    $query->when($filter['category']??false, function($query,$slug){
+      $query->wherehas('category',function($query) use ($slug){
+          $query->where('slug', $slug);
+      });
+    });
+     $query->when($filter['author']??false, function($query,$username){
+      $query->wherehas('author',function($query) use ($username){
+          $query->where('username', $username);
+      });
     });
     }
 
