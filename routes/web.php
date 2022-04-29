@@ -12,6 +12,5 @@ Route::get('/users/{user:username}', function (User $user) {
 
     return view('blogs',[
         "blogs" => $user->blogs,
-         "categories" =>Category::all()
     ]);
 });
