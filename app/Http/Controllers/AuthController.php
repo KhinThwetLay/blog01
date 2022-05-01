@@ -15,7 +15,7 @@ class AuthController extends Controller
         //validation
         $formData=request()->validate([
             'name' => ['required','max:255','min:3'],
-            'email' => ['required','email'],//is same to 'required|email'
+            'email' => ['required','email',Rule::unique('users','email')],//is same to 'required|email'
             'username' => ['required','max:255','min:3',Rule::unique('users','username')],
             'password' => ['required','min:8'],
         ]);
