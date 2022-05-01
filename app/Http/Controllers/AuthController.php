@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -10,7 +12,17 @@ class AuthController extends Controller
         return view('register.create');
     }
     public function store(){
-        dd(request()->all());
+        //validation
+        $formData=request()->validate([
+            'name' => ['required','max:255','min:3'],
+            'email' => ['required','email'],//is same to 'required|email'
+            'username' => ['required','max:255','min:3',Rule::unique('users','username')],
+            'password' => ['required','min:8'],
+        ]);
+
+        User::create($formData);
+
+        return redirect('/');
     }
 
 }
