@@ -36,11 +36,11 @@
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <ul>
+                    {{-- <ul>
                         @foreach($errors->all() as $error)
                             <li>{{$error}}</li>
                         @endforeach
-                    </ul>
+                    </ul> --}}
                     </form>
                 </div>
             </div>
